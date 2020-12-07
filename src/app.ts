@@ -2,6 +2,8 @@ import express, { Application} from 'express';
 import morgan from 'morgan';
 import path from 'path';
 import cors from 'cors';
+import bodyParser from "body-parser";
+import helmet from "helmet";
 
 import indexRoutes from './routes/index'
 
@@ -14,6 +16,8 @@ app.set('port', process.env.PORT || 4000);
 // Middlewares
 app.use(morgan('dev'));
 app.use(cors());
+app.use(helmet());
+app.use(bodyParser.json());
 app.use(express.json());
 
 // Routes

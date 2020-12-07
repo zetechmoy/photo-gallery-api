@@ -8,3 +8,5 @@ cd photo-gallery-api
 npm install
 npm start
 ```
+
+# Connect using admin:admin and change password then create new user

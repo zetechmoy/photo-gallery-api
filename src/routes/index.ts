@@ -1,20 +1,16 @@
 import { Router } from 'express'
+import { getPhotos, createPhoto, deletePhoto, getPhoto, updatePhoto } from '../controllers/photo.controller'
+import auth from "./auth";
+import user from "./user";
+import photo from "./photo";
+
 const router = Router();
 
-import upload from '../libs/multer'
-import { getPhotos, createPhoto, deletePhoto, getPhoto, updatePhoto } from '../controllers/photo.controller'
+router.use("/auth", auth);
+router.use("/user", user);
 
-// middleware
-// router.use(upload.single('image'));
+// photo
+router.use("/photo", photo);
 
-// routes
-router.route('/photos')
-    .get(getPhotos)
-    .post(upload.single('image'), createPhoto);
-
-router.route('/photos/:id')
-    .get(getPhoto)
-    .delete(deletePhoto)
-    .put(updatePhoto);
 
 export default router;
